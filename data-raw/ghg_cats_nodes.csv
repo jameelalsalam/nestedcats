@@ -1,0 +1,14 @@
+﻿name,descr,types
+total,Total GHGs,L0
+CO2,Carbon Dioxide,"L1, L2, gas"
+CH4,Methane,"L1, L2, gas"
+N2O,Nitrous Oxide,"L1, L2, gas"
+F-GHGs,Fluorinated GHGs,L1
+HFCs,Hydrofluorocarbons,L2
+PFCs,Perfluorocarbons,L2
+SF6,Suflur Hexaflouride,"L2, gas"
+NF3,NF3,"L2, gas"
+HFC-23,HFC-23,gas
+HFC-134a,HFC-134a,gas
+PFC-14,PFC-14,gas
+HFE-125,HFE-125,gas

@@ -1,0 +1,13 @@
+﻿from,to,type
+CO2,total,subcategory-of
+CH4,total,subcategory-of
+N2O,total,subcategory-of
+F-GHGs,total,subcategory-of
+HFCs,F-GHGs,subcategory-of
+PFCs,F-GHGs,subcategory-of
+SF6,F-GHGs,subcategory-of
+NF3,F-GHGs,subcategory-of
+HFC-23,HFCs,subcategory-of
+HFC-134a,HFCs,subcategory-of
+PFC-14,PFCs,subcategory-of
+HFE-125,F-GHGs,subcategory-of
