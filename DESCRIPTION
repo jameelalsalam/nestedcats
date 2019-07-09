@@ -13,6 +13,8 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     dplyr,
-    tidygraph
+    tidygraph,
+    magrittr
 Suggests: 
     ggraph
+RoxygenNote: 6.1.1
