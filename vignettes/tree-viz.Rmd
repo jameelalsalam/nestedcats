@@ -32,14 +32,14 @@ ghg_tg <- tbl_graph(nodes = ghg_nodes_df,
          root = node_is_root())
 ```
 
-### The Edge Data:
+## The Edge Data:
 
 ```{r, echo=FALSE}
 ghg_edges_df
 ```
 
 
-### Tree Visual using `ggraph` package:
+## Tree Visual using `ggraph` package:
 
 ```{r, echo=FALSE}
 # root red, leafs green, labeled nodes -- layout requires directed edges away from the root.
