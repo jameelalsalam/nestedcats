@@ -20,21 +20,15 @@ ghg_tg
 x <- as_tibble(ghg_tg)
 print(ghg_tg, n = 5)
 
-create_tree(20, 3) %>%
+# root red, leafs green, labeled nodes -- layout requires directed edges away from the root.
+ghg_tg %>%
   mutate(leaf = node_is_leaf(), root = node_is_root()) %>%
   ggraph(layout = 'tree') +
   geom_edge_diagonal() +
-  geom_node_point(aes(filter = leaf), colour = 'forestgreen', size = 10) +
-  geom_node_point(aes(filter = root), colour = 'firebrick', size = 10) +
+  geom_node_point(aes(filter = leaf, label = id), colour = 'forestgreen', size = 20) +
+  geom_node_point(aes(filter = root, label = id), colour = 'firebrick', size = 20) +
+  geom_node_text(aes(label = id)) +
   theme_graph()
-
-ggraph(ghg_tg, layout = 'circlepack') +
-  geom_edge_diagonal(arrow = arrow()) #+
-  #geom_node_label(mapping = aes(label = lbl))
-
-ggraph(ghg_tg, layout = 'nicely') +
-  geom_edge_diagonal(arrow = arrow()) #+
-#geom_node_label(mapping = aes(label = lbl))
 
 
 usethis::use_data("ghg_categories")
