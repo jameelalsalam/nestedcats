@@ -12,4 +12,5 @@ Does a set of nodes cover all leaf nodes?
 \examples{
 alist <- tibble::tibble(parent = c(1, 2, 2), child = c(2, 3, 4))
 clsr <- closure_table(alist)
+covers(1, clsr)
 }

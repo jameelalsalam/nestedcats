@@ -3,6 +3,7 @@
 export("%>%")
 export(covers)
 export(filter_root_leaf)
+export(graph_convert_edgelistdf_to_parentdf)
 export(overlaps)
 import(dplyr)
 import(tibble)

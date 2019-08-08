@@ -16,5 +16,6 @@ Imports:
     tidygraph,
     magrittr
 Suggests: 
-    ggraph
+    ggraph,
+    rmarkdown
 RoxygenNote: 6.1.1

@@ -1,0 +1,63 @@
+---
+title: "tree-viz"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+library(nestedcats)
+
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+library(collapsibleTree)
+```
+
+```{r, include=FALSE}
+ghg_edges_df <- read_csv(here::here("data-raw/ghg_cats_edges.csv"))
+
+ghg_nodes_df <- read_csv(here::here("data-raw/ghg_cats_nodes.csv")) %>%
+  rename(id = name)
+
+ghg_tg <- tbl_graph(nodes = ghg_nodes_df,
+                    edges = ghg_edges_df) %>%
+  activate(nodes) %>%
+  mutate(lbl = glue::glue("id: {id}")) %>%
+  mutate(leaf = node_is_leaf(),
+         root = node_is_root())
+```
+
+### The Edge Data:
+
+```{r, echo=FALSE}
+ghg_edges_df
+```
+
+
+### Tree Visual using `ggraph` package:
+
+```{r, echo=FALSE}
+# root red, leafs green, labeled nodes -- layout requires directed edges away from the root.
+ghg_tg %>%
+  mutate(leaf = node_is_leaf(), root = node_is_root()) %>%
+  ggraph(layout = 'tree') +
+  geom_edge_diagonal() +
+  geom_node_point(aes(filter = leaf, label = id), colour = 'forestgreen', size = 20) +
+  geom_node_point(aes(filter = root, label = id), colour = 'firebrick', size = 20) +
+  geom_node_text(aes(label = id)) +
+  theme_graph()
+```
+
+
+## Collapsible Tree widget using `collapsibleTree` package:
+
+```{r, echo=FALSE}
+graph_convert_edgelistdf_to_parentdf(ghg_edges_df) %>%
+  collapsibleTreeNetwork()
+```
+
