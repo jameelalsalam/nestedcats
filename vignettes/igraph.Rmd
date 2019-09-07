@@ -1,0 +1,208 @@
+---
+title: "igraph"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The `igraph` package is a very popular package for graph manipulation. It is mostly implemented in C, with interface packages in R and Python. It is written and maintained by Gabor Csardi and Tamas Nepusz. I have mostly interacted with it from R. Being relatively new to R and focused on the tidyverse, I have had some trouble learning it due to its sprawling size and multiple styles. This document is intended as a reference so that I can remind myself about the mapping of R/igraph functions onto graph concepts as I understand them.
+
+```{r setup}
+library(igraph)
+library(ggraph)
+library(gridExtra)
+```
+
+# Constructors
+
+There are a variety of igraph functions for constructing igraphs.
+
+- make_graph
+  - make_graph("notable graph name") #notable graph name
+  - make_graph(c("a", "b")) # character vector
+  - make_graph(c(1, 2)) # numeric vector
+- graph_from_adj_list
+- graph_from_adjacency_matrix
+- graph_from_data_frame
+
+
+```{r}
+set.seed(11)
+b1 <- make_graph("bull")
+b2 <- make_graph(c(1, 2,
+                   1, 3,
+                   2, 3,
+                   2, 4,
+                   3, 5), 
+                 directed = FALSE)
+
+par(mfrow = c(1, 2)); plot(b1); plot(b2)
+
+```
+
+The two "bull" graphs have the same set of five nodes, connected in the same ways. The plotting orientation is somewhat different, because the particular layout is not an inherent aspect of the graph, so some plotting choices are randomized with each plot. Even the same plot multiple times appears different.
+
+```{r}
+par(mfrow = c(2, 2))
+plot(b1); plot(b1); plot(b1); plot(b1)
+```
+
+More ways to construct the bull:
+
+```{r}
+library(tibble)
+adj_list_tibble <- tribble(
+  ~from, ~to,
+  1L, 2L,
+  1L, 3L,
+  2L, 3L,
+  2L, 4L,
+  3L, 5L
+)
+
+b3 <- graph_from_data_frame(adj_list_tibble, directed = FALSE)
+plot(b3)
+```
+
+
+
+```{r}
+adj_matrix <- matrix(
+  data = c(FALSE, TRUE, TRUE, FALSE, FALSE,
+           TRUE, FALSE, TRUE, TRUE, FALSE,
+           TRUE, TRUE, FALSE, FALSE, TRUE,
+           FALSE, TRUE, FALSE, FALSE, FALSE,
+           FALSE, FALSE, TRUE, FALSE, FALSE),
+  byrow = TRUE, ncol = 5
+)
+
+b4 <- graph_from_adjacency_matrix(adj_matrix, mode = "undirected")
+plot(b4)
+```
+
+```{r}
+b5 <- graph_from_literal(1--2--3--5, 1--3, 2--4)
+plot(b5)
+```
+
+
+While all of these graphs *appear* quite similar, igraph sees some distinctions.
+
+```{r}
+identical_graphs(b2, b1)
+identical_graphs(b2, b3)
+identical_graphs(b2, b4)
+identical_graphs(b2, b5)
+```
+
+
+
+
+
+
+
+# Examination of an igraph
+
+```{r}
+class(b1)
+```
+```{r}
+b1 # uses print.igraph method
+```
+```{r}
+b1[]
+attributes(b1)
+graph_attr(b1) # returns notable graph name, which didn't show before!
+b1$name
+```
+
+```{r}
+class(V(b1))
+V(b1)
+names(V(b1))
+V(b1)$name
+```
+```{r}
+class(E(b1))
+E(b1)
+names(E(b1))
+```
+
+
+# Queries
+
+Selecting edges or vertices:
+```{r}
+
+V(b1)[c(1, 2, 5)]
+E(b1)[1, 3, 4]
+
+```
+
+
+
+
+# Graph Questions and Types
+
+- is the graph acyclic?
+- is the graph directed?
+- (is it a DAG)?
+
+
+```{r}
+
+dag_bull <- make_graph(
+  c(1, 2,
+    1, 3,
+    2, 3,
+    2, 4,
+    3, 5)
+)
+
+plot(dag_bull)
+```
+
+```{r}
+is_dag(dag_bull)
+```
+
+```{r}
+topo_sort(dag_bull, mode = "out")
+```
+
+```{r}
+db <- dag_bull
+
+V(db)[[1]]
+```
+
+We want to see if vertices are indirectly connected to other vertices
+
+```{r}
+
+distances(db, mode = "out") %>% is.finite()
+
+```
+
+
+
+References:
+
+1) igraph docs
+
+2) 
+
+3)
+https://kateto.net/wp-content/uploads/2016/01/NetSciX_2016_Workshop.pdf
+
+4) matrix algebra for transitive closure
+https://www.ics.uci.edu/~irani/w15-6B/BoardNotes/MatrixMultiplication.pdf
+
+This is where I learned about `b1[]` showing the matrix.
+
+
+
