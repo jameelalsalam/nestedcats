@@ -1,0 +1,82 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# nestedcats
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of nestedcats is to ...
+
+Manipulate nested categorical data in a tidy way, building off of dplyr, tidygraph, and igraph
+
+This package aims to make it possible to store and manipulate rich hierarchical category information and do split-apply-combine operations on these categories.
+
+## Installation
+
+You can install the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("jameelalsalam/nestedcats")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidygraph))
+suppressPackageStartupMessages(library(ggraph))
+
+library(nestedcats)
+
+cats <- tibble(name = c("1", "1a", "1a1", "1a2", "1b"))
+
+cat_tree <- tibble::tibble(
+  parent = c("1", "1", "1a", "1a"),
+  child =  c("1a", "1b", "1a1", "1a2")
+)
+
+cat_g <- tbl_graph(cats, cat_tree)
+
+ggraph_nestedcats_tree(cat_g)
+
+```
+
+cat_tree <- tibble::tibble(
+  parent = c(NA_character, "1", "1", "1a", "1a"),
+  child = c("1", "1a", "1b", "1a1", "1a2")
+) %>% as_closure_tbl()
+
+leaf_data <- tibble::tibble(
+  cat = c("1b", "1a1", "1a2"),
+  value = c(1, 2, 3)
+)
+
+leaf_data %>%
+  group_by_cats(cat = c("1a", "1b"), along = cat_tree) %>%
+  summarize(value = sum(value, na.rm = TRUE))
+
+verify_covers(c("1a", "1b"), over = cat_tree)
+verify_disjoint(c("1a", "1b"), along = cat_tree)
+verify_disjoint_covers(c("1a", "1b"), along = cat_tree)
+
+all.equal(coverage(c("1a", "1b"), along = cat_tree),
+          coverage("1", along = cat_tree))
+
+
+
