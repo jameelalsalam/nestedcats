@@ -36,6 +36,8 @@ devtools::install_github("jameelalsalam/nestedcats")
 
 This is a basic example which shows you how to solve a common problem:
 
+Suppose you have information about a tree of nested categories. This package takes the approach of representing this as a `tbl_graph` from the `tidygraph` package.
+
 ```{r example}
 
 suppressPackageStartupMessages(library(tidyverse))
@@ -57,15 +59,26 @@ ggraph_nestedcats_tree(cat_g)
 
 ```
 
+And further suppose you have information about the leaf nodes.
+
+```{r}
+
+leaf_data <- tibble(
+  cat = c("1b", "1a1", "1a2"),
+  value = c(1, 2, 3)
+)
+
+```
+
+
+
+
 cat_tree <- tibble::tibble(
   parent = c(NA_character, "1", "1", "1a", "1a"),
   child = c("1", "1a", "1b", "1a1", "1a2")
 ) %>% as_closure_tbl()
 
-leaf_data <- tibble::tibble(
-  cat = c("1b", "1a1", "1a2"),
-  value = c(1, 2, 3)
-)
+
 
 leaf_data %>%
   group_by_cats(cat = c("1a", "1b"), along = cat_tree) %>%
