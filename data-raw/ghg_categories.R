@@ -18,7 +18,7 @@ ghg_tg <- tbl_graph(nodes = ghg_nodes_df,
 
 ghg_tg
 x <- as_tibble(ghg_tg)
-print(ghg_tg, n = 5)
+print(x, n = 5)
 
 # root red, leafs green, labeled nodes -- layout requires directed edges away from the root.
 ghg_tg %>%
@@ -31,4 +31,4 @@ ghg_tg %>%
   theme_graph()
 
 
-usethis::use_data("ghg_categories")
+usethis::use_data(ghg_tg)

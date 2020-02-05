@@ -5,3 +5,4 @@
 ^docs$
 ^pkgdown$
 ^vignettes/igraph\.Rmd$
+^vignettes/tidygraph\.Rmd$

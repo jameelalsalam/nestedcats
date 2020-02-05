@@ -1,0 +1,24 @@
+---
+title: "tidygraph"
+---
+
+Nested categories are represented in a graph structure, and thus we need convenient tools for creation and manipulation of the graphs that will represent the nested categories. One strong possibility is the [tidygraph](https://tidygraph.data-imaginist.com/index.html) package by Thomas Lin Pedersen, which builds on top of igraph and tidyverse approaches.
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r setup}
+library(tidyverse)
+library(tidygraph)
+library(nestedcats)
+
+gr <- tribble(
+  ~from, ~to,
+  
+)
+```
