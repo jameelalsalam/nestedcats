@@ -1,0 +1,232 @@
+﻿code,name
+1,Energy
+1A,Fuel Combustion Activities
+1A1,Energy Industries
+1A1a,Main Activity Electricity and Heat Production
+1A1ai,Electricity Generation
+1A1aii,Combined Heat and Power Generation (CHP)
+1A1aiii,Heat Plants
+1A1b,Petroleum Refining
+1A1c,Manufacture of Solid Fuels and Other Energy Industries
+1A1ci,Manufacture of Solid Fuels
+1A1cii,Other Energy Industries
+1A2,Manufacturing Industries and Construction
+1A2a,Iron and Steel
+1A2b,Non-Ferrous Metals
+1A2c,Chemicals
+1A2d,"Pulp, Paper and Print"
+1A2e,"Food Processing, Beverages and Tobacco"
+1A2f,Non-Metallic Minerals
+1A2g,Transportation Equipment
+1A5,Non-Specified
+1A5a,Stationary
+1A5b,Mobile
+1B,Fugitive Emissions from Fuels
+1B1,Solid Fuels
+1B1a,Coal Mining and Handling
+1B1ai,Underground Mines
+1B1ai1,Mining
+1B1ai2,Post-mining Seam Gas Emissions
+1B1ai3,Abandoned Underground Mines
+1B1ai4,Flaring of Drained Methane or Conversion of Methane to CO2
+1B1aii,Surface Mines
+1B1aii1,Mining
+1B1aii2,Post-mining Seam Gas Emissions
+1B1b,"Uncontrolled Combustion, and Burning Coal Dumps"
+1B1c,Solid Fuel Transformation
+1B2,Oil and Natural Gas
+1B2a,Oil
+1B2ai,Venting
+1B2aii,Flaring
+1B2aiii,All Other
+1B2aiii1,Exploration
+1B2aiii2,Production and Upgrading
+1B2aiii3,Transport
+1B2aiii4,Refining
+1B2aiii5,Distribution of Oil Products
+1B2aiii6,Other
+1B2b,Natural Gas
+1B2bi,Venting
+1B2bii,Flaring
+1B2biii,All Other
+1B2biii1,Exploration
+1B2biii2,Production
+1B2biii3,Processing
+1B2biii4,Transmission and Storage
+1B2biii5,Distribution
+1B2biii6,Other
+1B3,Other Emissions from Energy Production
+2A,Mineral Industry
+2B,Chemical Industry
+2B1,Ammonia Production
+2B2,Nitric Acid Production
+2B3,Adipic Acid Production
+2B4,"Caprolactam, Glyoxal and Glyoxylic Acid Production"
+2B5,Carbide Production
+2B6,Titanium Dioxide Production
+2B7,Soda Ash Production
+2B8,Petrochemical and Carbon Black Production
+2B8a,Methanol
+2B8b,Ethylene
+2B8c,Ethylene Dichloride and Vinyl Chloride Monomer
+2B8d,Ethylene Oxide
+2B8e,Acrylonitrile
+2B8f,Carbon Black
+2B9,Fluorochemical Production
+2B9a,By-product Emissions
+2B9b,Fugitive Emissions
+2B10,Other (please specify)
+2C,Metal Industry
+2C1,Iron and Steel Production
+2C2,Ferroalloys Production
+2C3,Aluminum Production
+2C4,Magnesium Production
+2C5,Lead Production
+2C6,Zinc Production
+2C7,Other (please specify)
+2D,Non-Energy Products from Fuels and Solvent Use
+2D1,Lubricant Use
+2D2,Paraffin Wax Use
+2D3,Solvent Use
+2D4,Other (please specify)
+2E,Electronics Industry
+2E1,Integrated Circuit or Semiconductor
+2E2,TFT Flat Panel Display
+2E3,Photovoltaics
+2E4,Heat Transfer Fluid
+2E5,Other (please specify)
+2F,Product Use as Substitutes for Ozone Depleting Substances
+2F1,Refrigeration and Air Conditioning
+2F1a,Refrigeration and Stationary Air Conditioning
+2F1b,Mobile Air Conditioning
+2F2,Foam Blowing Agents
+2F3,Fire Protection
+2F4,Aerosols
+2F5,Solvents
+2F6,Other Applications (please specify)
+2G,Other Product Manufacture and Use
+2G1,Electrical Equipment
+2G1a,Manufacture of Electrical Equipment
+2G1b,Use of Electrical Equipment
+2G1c,Disposal of Electrical Equipment
+2G2,SF6 and PFCs from Other Product Uses
+2G2a,Military Applications
+2G2b,Accelerators
+2G2c,Other (please specify)
+2G3,N2O from Product Uses
+2G3a,Medical Applications
+2G3b,Propellant for Pressure and Aerosol Products
+2G3c,Other (please specify)
+2G4,Other (please specify)
+2H,Other
+2H1,Pulp and Paper Industry
+2H2,Food and Beverages Industry
+2H3,Other (please specify)
+3,"Agriculture, Forestry, and Other Land Use"
+3A,Livestock
+3A1,Enteric Fermentation
+3A1a,Cattle
+3A1ai,Dairy Cows
+3A1aii,Other Cattle
+3A1b,Buffalo
+3A1c,Sheep
+3A1d,Goats
+3A1e,Camels
+3A1f,Horses
+3A1g,Mules and Asses
+3A1h,Swine
+3A1j,Other (please specify)
+3A2,Manure Management
+3A2a,Cattle
+3A2ai,Dairy Cows
+3A2aii,Other Cattle
+3A2b,Buffalo
+3A2c,Sheep
+3A2d,Goats
+3A2e,Camels
+3A2f,Horses
+3A2g,Mules and Asses
+3A2h,Swine
+3A2i,Poultry
+3A2j,Other (please specify)
+3B,Land
+3B1,Forest Land
+3B1a,Forest Land Remaining Forest Land
+3B1b,Land Converted to Forest Land
+3B1bi,Cropland Converted to Forest Land
+3B1bii,Grassland Converted to Forest Land
+3B1biii,Wetlands Converted to Forest Land
+3B1biv,Settlements Converted to Forest Land
+3B1bv,Other Land Converted to Forest Land
+3B2,Cropland
+3B2a,Cropland Remaining Cropland
+3B2b,Land Converted to Cropland
+3B2bi,Forest Land Converted to Cropland
+3B2bii,Grassland Converted to Cropland
+3B2biii,Wetlands Converted to Cropland
+3B2biv,Settlements Converted to Cropland
+3B2bv,Other Land Converted to Cropland
+3B3,Grassland
+3B3a,Grassland Remaining Grassland
+3B3b,Land Converted to Grassland
+3B3bi,Forest Land Converted to Grassland
+3B3bii,Cropland Converted to Grassland
+3B3biii,Wetlands Converted to Grassland
+3B3biv,Settlements Converted to Grassland
+3B3bv,Other Land Converted to Grassland
+3B4,Wetlands
+3B4a,Wetlands Remaining Wetlands
+3B4ai,Peatlands Remaining Peatlands
+3B4aii,Flooded Land Remaining Flooded Land
+3B4b,Land Converted to Wetlands
+3B4bi,Land Converted for Peat Extraction
+3B4bii,Land Converted to Flooded Land
+3B4biii,Land Converted to Other Wetlands
+3B5,Settlements
+3B5a,Settlements Remaining Settlements
+3B5b,Land Converted to Settlements
+3B5bi,Forest Land Converted to Settlements
+3B5bii,Cropland Converted to Settlements
+3B5biii,Grassland Converted to Settlements
+3B5biv,Wetlands Converted to Settlements
+3B5bv,Other Land Converted to Settlements
+3B6,Other Land
+3B6a,Other Land Remaining Other Land
+3B6b,Land Converted to Other Land
+3B6bi,Forest Land Converted to Other Land
+3B6bii,Cropland Converted to Other Land
+3B6biii,Grassland Converted to Other Land
+3B6biv,Wetlands Converted to Other Land
+3B6bv,Settlements Converted to Other Land
+3C,Aggregate Sources and Non-CO2 Emissions Sources on Land
+3C1,Emissions from Biomass Burning
+3C1a,Biomass Burning in Forest Lands
+3C1b,Biomass Burning in Croplands
+3C1c,Biomass Burning in Grasslands
+3C1d,Biomass Burning in All Other Land
+3C2,Liming
+3C3,Urea Application
+3C4,Direct N2O Emissions from Managed Soils
+3C5,Indirect N2O Emissions from Managed Soils
+3C6,Indirect N2O Emissions from Manure Management
+3C7,Rice Cultivations
+3C8,Other (please specify)
+3D,Other
+3D1,Harvested Wood Products
+3D2,Other (please specify)
+4,Waste
+4A,Solid Waste Disposal
+4A1,Managed Waste Disposal Sites
+4A2,Unmanaged Waste Disposal Sites
+4A3,Uncategorised Waste Disposal Sites
+4B,Biological Treatment of Solid Waste
+4C,Incineration and Open Burning of Waste
+4C1,Waste Incineration
+4C2,Open Burning of Waste
+4D,Wastewater Treatment and Discharge
+4D1,Domestic Wastewater Treatment and Discharge
+4D2,Industrial Wastewater Treatment and Discharge
+4E,Other (please specify)
+5,Other
+5A,Indirect N2O Emissiosn from the Atmospheric Deposition of Nitrogen in NOx and NH3
+5B,Other (please specify)
