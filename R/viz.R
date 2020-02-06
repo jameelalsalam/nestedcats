@@ -27,15 +27,20 @@ viz_cats_ggraph_tree <- function(g) {
 #' Visualize nested categories as a collapsible tree
 #'
 #' @return html widget, I think
-#' @import collapsibleTree
 #' @export
 viz_cats_collapsible_tree <- function(g) {
 
   collapsible_tree <- g %>%
     igraph::as_data_frame(what = "edges") %>%
     graph_convert_edgelistdf_to_parentdf() %>%
-    collapsibleTreeNetwork()
+    collapsibleTree::collapsibleTreeNetwork()
 
   collapsible_tree
 }
 
+
+# viz_cats_tree_table -- would use kableExtra type table...
+
+# viz_cats_venn_diagram -- ??
+
+# viz_cats_dag ??
