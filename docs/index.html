@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What the Package Does (One Line, Title Case) • nestedcats</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/sandstone/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">nestedcats</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -77,40 +77,54 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-
 <div id="nestedcats" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#nestedcats" class="anchor"></a>nestedcats</h1></div>
-<p>Manipulate nested categorical data in a tidy way, building off of dplyr, tidygraph, and igraph</p>
+<!-- badges: start -->
+<!-- badges: end -->
 <p>This package aims to make it possible to store and manipulate rich hierarchical category information and do split-apply-combine operations on these categories.</p>
-<pre><code>cat_tree &lt;- tibble::tibble(
-  parent = c(NA_character, "1", "1", "1a", "1a"),
-  child = c("1", "1a", "1b", "1a1", "1a2"")
-) %&gt;% as_closure_tbl()
-
-leaf_data &lt;- tibble::tibble(
-  cat = c("1b", "1a1", "1a2"),
-  value = c(1, 2, 3)
-)
-
-leaf_data %&gt;%
-  group_by_cats(cat = c("1a", "1b"), along = cat_tree) %&gt;%
-  summarize(value = sum(value, na.rm = TRUE))
-
-verify_covers(c("1a", "1b"), over = cat_tree)
-verify_disjoint(c("1a", "1b"), along = cat_tree)
-verify_disjoint_covers(c("1a", "1b"), along = cat_tree)
-
-all.equal(coverage(c("1a", "1b"), along = cat_tree),
-          coverage("1", along = cat_tree))
-        </code></pre>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" title="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"jameelalsalam/nestedcats"</span>)</a></code></pre></div>
 </div>
-<div id="key-terms" class="section level1">
-<h1 class="hasAnchor">
-<a href="#key-terms" class="anchor"></a>Key Terms:</h1>
-<p>Tree data structure: <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)" class="uri">https://en.wikipedia.org/wiki/Tree_(data_structure)</a> Containment order: <a href="https://en.wikipedia.org/wiki/Containment_order" class="uri">https://en.wikipedia.org/wiki/Containment_order</a> Covering relation: <a href="https://en.wikipedia.org/wiki/Covering_relation" class="uri">https://en.wikipedia.org/wiki/Covering_relation</a> Disjoint sets: <a href="https://en.wikipedia.org/wiki/Disjoint_sets" class="uri">https://en.wikipedia.org/wiki/Disjoint_sets</a> Partially ordered set: <a href="https://en.wikipedia.org/wiki/Partially_ordered_set" class="uri">https://en.wikipedia.org/wiki/Partially_ordered_set</a></p>
+<div id="example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h2>
+<p>This is a basic example which shows you how to solve a common problem:</p>
+<p>Suppose you have information about a tree of nested categories. This package takes the approach of representing this as a <code>tbl_graph</code> from the <code>tidygraph</code> package.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse))</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidygraph))</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggraph))</a>
+<a class="sourceLine" id="cb2-5" title="5"></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(nestedcats)</a>
+<a class="sourceLine" id="cb2-7" title="7"></a>
+<a class="sourceLine" id="cb2-8" title="8">cats &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">name =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1"</span>, <span class="st">"1a"</span>, <span class="st">"1a1"</span>, <span class="st">"1a2"</span>, <span class="st">"1b"</span>))</a>
+<a class="sourceLine" id="cb2-9" title="9"></a>
+<a class="sourceLine" id="cb2-10" title="10">cat_tree &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(</a>
+<a class="sourceLine" id="cb2-11" title="11">  <span class="dt">parent =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1"</span>, <span class="st">"1"</span>, <span class="st">"1a"</span>, <span class="st">"1a"</span>),</a>
+<a class="sourceLine" id="cb2-12" title="12">  <span class="dt">child =</span>  <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1a"</span>, <span class="st">"1b"</span>, <span class="st">"1a1"</span>, <span class="st">"1a2"</span>)</a>
+<a class="sourceLine" id="cb2-13" title="13">)</a>
+<a class="sourceLine" id="cb2-14" title="14"></a>
+<a class="sourceLine" id="cb2-15" title="15">cat_g &lt;-<span class="st"> </span><span class="kw">tbl_graph</span>(cats, cat_tree)</a>
+<a class="sourceLine" id="cb2-16" title="16"></a>
+<a class="sourceLine" id="cb2-17" title="17"><span class="kw"><a href="reference/viz_cats_ggraph_tree.html">viz_cats_ggraph_tree</a></span>(cat_g)</a></code></pre></div>
+<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<p>And further suppose you have information about the leaf nodes.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"></a>
+<a class="sourceLine" id="cb3-2" title="2">leaf_data &lt;-<span class="st"> </span><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb3-3" title="3">  <span class="dt">cat =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"1b"</span>, <span class="st">"1a1"</span>, <span class="st">"1a2"</span>),</a>
+<a class="sourceLine" id="cb3-4" title="4">  <span class="dt">value =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-5" title="5">)</a></code></pre></div>
+<p>cat_tree &lt;- tibble::tibble( parent = c(NA_character, “1”, “1”, “1a”, “1a”), child = c(“1”, “1a”, “1b”, “1a1”, “1a2”) ) %&gt;% as_closure_tbl()</p>
+<p>leaf_data %&gt;% group_by_cats(cat = c(“1a”, “1b”), along = cat_tree) %&gt;% summarize(value = sum(value, na.rm = TRUE))</p>
+<p>verify_covers(c(“1a”, “1b”), over = cat_tree) verify_disjoint(c(“1a”, “1b”), along = cat_tree) verify_disjoint_covers(c(“1a”, “1b”), along = cat_tree)</p>
+<p>all.equal(coverage(c(“1a”, “1b”), along = cat_tree), coverage(“1”, along = cat_tree))</p>
 </div>
-
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

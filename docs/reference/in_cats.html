@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Does the coverage of a set reach overlapping leaves? — overlaps • nestedcats</title>
+<title>Check if categories are inside *which* other categories — in_cats • nestedcats</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Does the coverage of a set reach overlapping leaves? — overlaps" />
-<meta property="og:description" content="Does the coverage of a set reach overlapping leaves?" />
+<meta property="og:title" content="Check if categories are inside *which* other categories — in_cats" />
+<meta property="og:description" content="Check if categories are inside *which* other categories" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,23 +118,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Does the coverage of a set reach overlapping leaves?</h1>
+    <h1>Check if categories are inside *which* other categories</h1>
     
-    <div class="hidden name"><code>overlaps.Rd</code></div>
+    <div class="hidden name"><code>in_cats.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Does the coverage of a set reach overlapping leaves?</p>
+    <p>Check if categories are inside *which* other categories</p>
     </div>
 
-    <pre class="usage"><span class='fu'>overlaps</span>(<span class='no'>cats</span>, <span class='no'>clsr_tbl</span>)</pre>
+    <pre class="usage"><span class='fu'>in_cats</span>(<span class='no'>v</span>, <span class='no'>cats</span>, <span class='no'>g</span>)</pre>
 
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>in_cats</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"CH4"</span>, <span class='st'>"NF3"</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"HFCs"</span>, <span class='st'>"F-GHGs"</span>), <span class='no'>ghg_cats</span>)</div><div class='output co'>#&gt; <span class='error'>Error in in_cats(c("CH4", "NF3"), c("HFCs", "F-GHGs"), ghg_cats): could not find function "in_cats"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

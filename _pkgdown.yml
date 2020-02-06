@@ -1,1 +1,24 @@
 destination: docs
+
+template:
+  params:
+    bootswatch: sandstone
+
+development:
+  mode: unreleased
+
+reference:
+- title: Cats
+  contents:
+  - in_cats
+- title: Example Data
+  contents:
+    - fruit_veggie_cats
+    - ghg_cats
+    - ipcc_cats
+- title: Conversions
+- title: Helpers
+- title: Viz
+  contents:
+    - viz_cats_ggraph_tree
+    - viz_cats_collapsible_tr

@@ -7,11 +7,6 @@
 
 <!-- badges: end -->
 
-The goal of nestedcats is to …
-
-Manipulate nested categorical data in a tidy way, building off of dplyr,
-tidygraph, and igraph
-
 This package aims to make it possible to store and manipulate rich
 hierarchical category information and do split-apply-combine operations
 on these categories.
@@ -51,7 +46,7 @@ cat_tree <- tibble::tibble(
 
 cat_g <- tbl_graph(cats, cat_tree)
 
-ggraph_nestedcats_tree(cat_g)
+viz_cats_ggraph_tree(cat_g)
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
