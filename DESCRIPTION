@@ -14,8 +14,10 @@ LazyData: true
 Imports: 
     dplyr,
     tidygraph,
-    magrittr
-Suggests: 
+    magrittr,
+    collapsibleTree,
     ggraph,
+    ggplot2
+Suggests: 
     rmarkdown
 RoxygenNote: 6.1.1

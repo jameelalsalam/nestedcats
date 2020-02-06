@@ -27,10 +27,11 @@ reachable_leaves_chr <- function(g, v) {
   as_ids(reachable_vertices_vs(g, v))
 }
 
+
+#' Check if categories are inside *which* other categories
+#'
 #' @examples
-#' along <- cat_g
-#' .data <- leaf_data
-#' cats <- c("1a", "1b")
+#' in_cats(c("CH4", "NF3"), c("HFCs", "F-GHGs"), ghg_cats)
 in_cats <- function(v, cats, g) {
 
   reach_tbl <- tibble(
