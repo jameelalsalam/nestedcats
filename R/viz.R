@@ -2,12 +2,16 @@
 
 #' Default dendrogram for visualizing nested categories
 #'
+#' @param g graph of nested categories (igraph, tidygraph, others?)
+#'
 #' @import ggraph
 #' @import dplyr
+#' @import tidygraph
 #' @export
-ggraph_nestedcats_tree <- function(g) {
+viz_cats_ggraph_tree <- function(g) {
 
-  g %>%
+  ggraph_tree <- g %>%
+    as_tbl_graph() %>%
     mutate(leaf = node_is_leaf(), root = node_is_root()) %>%
     ggraph(layout = 'tree') +
     geom_edge_diagonal() +
@@ -15,4 +19,23 @@ ggraph_nestedcats_tree <- function(g) {
     geom_node_point(aes(filter = root), colour = 'firebrick', size = 20) +
     geom_node_text(aes(label = name)) +
     theme_graph()
+
+  ggraph_tree
 }
+
+
+#' Visualize nested categories as a collapsible tree
+#'
+#' @return html widget, I think
+#' @import collapsibleTree
+#' @export
+viz_cats_collapsible_tree <- function(g) {
+
+  collapsible_tree <- g %>%
+    igraph::as_data_frame(what = "edges") %>%
+    graph_convert_edgelistdf_to_parentdf() %>%
+    collapsibleTreeNetwork()
+
+  collapsible_tree
+}
+

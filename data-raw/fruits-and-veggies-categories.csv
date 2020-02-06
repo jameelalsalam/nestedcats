@@ -1,0 +1,9 @@
+﻿parent-category,child-category
+all,vegetable-culinary
+all,fruit-botanical
+vegetable-culinary,radishes
+vegetable-culinary,broccoli
+vegetable-culinary,tomatos
+fruit-botanical,tomatos
+fruit-botanical,pears
+fruit-botanical,peaches
