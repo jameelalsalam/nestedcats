@@ -4,7 +4,14 @@
 \alias{new_pofct}
 \title{Low-level constructor for pofct S3 class}
 \usage{
-new_pofct(x, po)
+new_pofct(x = integer(), labels = character(), po = tibble())
+}
+\arguments{
+\item{x}{integer vector to index into labels and partial ordering}
+
+\item{po}{a dataframe representing the partial order}
+
+\item{levels}{character vector of levels (labels) for pofct values}
 }
 \description{
 Low-level constructor for pofct S3 class

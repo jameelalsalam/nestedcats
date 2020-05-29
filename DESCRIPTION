@@ -17,7 +17,9 @@ Imports:
     magrittr,
     collapsibleTree,
     ggraph,
-    ggplot2
+    ggplot2,
+    vctrs,
+    tibble
 Suggests: 
     rmarkdown
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
