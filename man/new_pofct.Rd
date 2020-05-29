@@ -2,17 +2,20 @@
 % Please edit documentation in R/partial-order-factor.R
 \name{new_pofct}
 \alias{new_pofct}
-\title{Low-level constructor for pofct S3 class}
+\title{Low-level constructor for Partially Ordered Factors `pofct` S3 class}
 \usage{
 new_pofct(x = integer(), labels = character(), po = tibble())
 }
 \arguments{
 \item{x}{integer vector to index into labels and partial ordering}
 
-\item{po}{a dataframe representing the partial order}
+\item{po}{a data frame representing the partial order
+
+The partial order is a data frame of edges (e.g., with integer columns `from` and `to`).
+Each edge represents a has-subset relation, e.g. `to` <= `from`.}
 
 \item{levels}{character vector of levels (labels) for pofct values}
 }
 \description{
-Low-level constructor for pofct S3 class
+Low-level constructor for Partially Ordered Factors `pofct` S3 class
 }

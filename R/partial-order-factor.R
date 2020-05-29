@@ -1,8 +1,8 @@
 #' Low-level constructor for Partially Ordered Factors `pofct` S3 class
 #'
-#' @param x integer vector to index into labels and partial ordering
-#' @param levels character vector of levels (labels) for pofct values
-#' @param po a data frame representing the partial order
+#' @param x integer vector to index into levels and partial order
+#' @param levels character vector of labels
+#' @param partial_order an edges data frame representing the partial order.
 #'
 #' The partial order is a data frame of edges (e.g., with integer columns `from` and `to`).
 #' Each edge represents a has-subset relation, e.g. `to` <= `from`.
@@ -10,19 +10,31 @@
 #' @import vctrs
 #' @import tibble
 #' @export
+#' @examples
+#' new_pofct(c(1L, 2L, 3L), levels = c("whole", "part1", "part2"),
+#'   partial_order = tibble(from = c(1L, 1L), to = c(2L, 3L)))
 new_pofct <- function(x = integer(),
-                      labels = character(),
-                      po = tibble()) {
+                      levels = character(),
+                      partial_order = tibble()) {
   vec_assert(x, integer())
-  stopifnot(is.character(labels))
-  stopifnot(inherits(tibble(), "data.frame"))
+  stopifnot(is.character(levels))
+  stopifnot(inherits(partial_order, "data.frame"))
+
+  po <- igraph::graph_from_data_frame(partial_order)
+
+  new_vctr(
+    x,
+    levels = levels,
+    po = po,
+    class = "pofct"
+  )
 }
 
 #' Format S3 method
 #'
 #' @export
 format.pofct <- function(x) {
-
+  unclass(x)
 }
 
 #' Validate pofct S3 class
