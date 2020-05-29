@@ -1,0 +1,40 @@
+---
+title: "Representing Nested Category Relationships"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+To represent the potentially complicated nesting of categories, we will use a graph. In particular, the graph must be a tree or directed acyclic graph (DAG) such that the edges represent subset relationships.
+
+The machinery for working with trees and graphs can be a bit unfamiliar (especially to me) so this article explores the different ways that the graph data structure can be constructed and represented inside of nested categories and/or partially ordered factor objects.
+
+
+```{r setup}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(igraph))
+library(nestedcats)
+
+ghg_nodes_df <- read_csv(system.file("extdata", "ghg_cats_nodes.csv", package = "nestedcats"))
+ghg_edges_df <- read_csv(system.file("extdata", "ghg_cats_edges.csv", package = "nestedcats"))
+
+ghg_edges_df
+```
+
+The correct format for the `igraph::graph_from_data_frame` constructor is a two-column data frame, with symbolic node names in each, and then a second data frame with node attributes. That is, the edge_df can have integer or character values.
+
+
+```{r}
+ghg_graph <- graph_from_data_frame(ghg_edges_df, vertices = ghg_nodes_df)
+ghg_graph
+```
+
+The key features are that:
+
+ * the secondary vertices data frame have the same list of node names as are used in the first two columns of the edge df.
+ * the order of the secondary vertices df becomes the underlying node numbers in the graph.
+
