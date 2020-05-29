@@ -7,3 +7,4 @@
 ^vignettes/igraph\.Rmd$
 ^vignettes/tidygraph\.Rmd$
 ^README\.Rmd$
+^vignettes/articles$
