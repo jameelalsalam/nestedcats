@@ -5,7 +5,7 @@
 #' @param partial_order an edges data frame representing the partial order.
 #'
 #' The partial order is a data frame of edges (e.g., with integer columns `from` and `to`).
-#' Each edge represents a has-subset relation, e.g. `to` <= `from`.
+#' Each edge represents a has-subset relation, e.g. `to` <= `from`, which is sort of a fat arrow.
 #'
 #' @import vctrs
 #' @import tibble
@@ -34,7 +34,9 @@ new_pofct <- function(x = integer(),
 #'
 #' @export
 format.pofct <- function(x) {
-  unclass(x)
+  attr(x, "levels")[x]
+  # attr(x, "po")
+  # also need to figure out how to include graph info
 }
 
 #' Validate pofct S3 class
