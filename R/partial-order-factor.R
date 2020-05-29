@@ -30,13 +30,34 @@ new_pofct <- function(x = integer(),
   )
 }
 
+# implementing simple factor in vctrs s3: https://github.com/r-lib/vctrs/issues/82
+
 #' Format S3 method
 #'
 #' @export
 format.pofct <- function(x) {
   attr(x, "levels")[x]
+}
+
+#' @export
+obj_print_footer.pofct <- function(x, ...) {
+  # need to figure out how to hook this in
   # attr(x, "po")
-  # also need to figure out how to include graph info
+  cat("Nesting: ")
+}
+
+#' Helper for more convenient partial order factor creation
+#'
+#' @param x the values
+#' @param levels optional character vector, mostly for ordering.
+#' @param partial_order tibble with symbolic columns `from` and `to`
+#' @export
+pofct <- function(x = character(), levels, partial_order = tibble(), ...) {
+
+  # translate x -> int & levels, partial order -> corresponding int.
+  # is this too much?
+  # what should int order be based on?
+
 }
 
 #' Validate pofct S3 class
