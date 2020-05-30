@@ -20,7 +20,9 @@ Imports:
     ggplot2,
     vctrs,
     tibble,
-    igraph
+    igraph,
+    glue
 Suggests: 
-    rmarkdown
+    rmarkdown,
+    testthat
 RoxygenNote: 7.1.0

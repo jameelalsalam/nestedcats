@@ -4,7 +4,7 @@
 \alias{pofct}
 \title{Helper for more convenient partial order factor creation}
 \usage{
-pofct(x = character(), levels, partial_order = tibble(), ...)
+pofct(x = character(), po = tibble(from = character(), to = character()))
 }
 \arguments{
 \item{x}{the values}
@@ -15,4 +15,7 @@ pofct(x = character(), levels, partial_order = tibble(), ...)
 }
 \description{
 Helper for more convenient partial order factor creation
+}
+\examples{
+pofct(c("fruit", "apples", "bananas"), po = tibble(from=c("fruit", "fruit"),to=c("apples", "bananas")))
 }

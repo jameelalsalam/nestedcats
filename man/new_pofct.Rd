@@ -4,14 +4,12 @@
 \alias{new_pofct}
 \title{Low-level constructor for Partially Ordered Factors `pofct` S3 class}
 \usage{
-new_pofct(x = integer(), levels = character(), partial_order = tibble())
+new_pofct(x = character(), po = tibble(from = character(), to = character()))
 }
 \arguments{
 \item{x}{integer vector to index into levels and partial order}
 
-\item{levels}{character vector of labels}
-
-\item{partial_order}{an edges data frame representing the partial order.
+\item{po}{an edges data frame representing the partial order.
 
 The partial order is a data frame of edges (e.g., with integer columns `from` and `to`).
 Each edge represents a has-subset relation, e.g. `to` <= `from`, which is sort of a fat arrow.}
@@ -20,6 +18,5 @@ Each edge represents a has-subset relation, e.g. `to` <= `from`, which is sort o
 Low-level constructor for Partially Ordered Factors `pofct` S3 class
 }
 \examples{
-new_pofct(c(1L, 2L, 3L), levels = c("whole", "part1", "part2"),
-  partial_order = tibble(from = c(1L, 1L), to = c(2L, 3L)))
+new_pofct(c("whole", "part1", "part2"), po = tibble(from = c("whole", "whole"), to = c("part1", "part2")))
 }

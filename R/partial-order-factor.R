@@ -1,8 +1,7 @@
 #' Low-level constructor for Partially Ordered Factors `pofct` S3 class
 #'
 #' @param x integer vector to index into levels and partial order
-#' @param levels character vector of labels
-#' @param partial_order an edges data frame representing the partial order.
+#' @param po an edges data frame representing the partial order.
 #'
 #' The partial order is a data frame of edges (e.g., with integer columns `from` and `to`).
 #' Each edge represents a has-subset relation, e.g. `to` <= `from`, which is sort of a fat arrow.
@@ -11,20 +10,16 @@
 #' @import tibble
 #' @export
 #' @examples
-#' new_pofct(c(1L, 2L, 3L), levels = c("whole", "part1", "part2"),
-#'   partial_order = tibble(from = c(1L, 1L), to = c(2L, 3L)))
-new_pofct <- function(x = integer(),
-                      levels = character(),
-                      partial_order = tibble()) {
-  vec_assert(x, integer())
-  stopifnot(is.character(levels))
-  stopifnot(inherits(partial_order, "data.frame"))
+#' new_pofct(c("whole", "part1", "part2"), po = tibble(from = c("whole", "whole"), to = c("part1", "part2")))
+new_pofct <- function(x = character(),
+                      po = tibble(from = character(), to = character())) {
+  vec_assert(x, character())
+  stopifnot(inherits(po, "data.frame"))
 
-  po <- igraph::graph_from_data_frame(partial_order)
+  po <- igraph::graph_from_data_frame(po)
 
   new_vctr(
     x,
-    levels = levels,
     po = po,
     class = "pofct"
   )
@@ -36,14 +31,19 @@ new_pofct <- function(x = integer(),
 #'
 #' @export
 format.pofct <- function(x) {
-  attr(x, "levels")[x]
+  vec_data(x)
 }
 
 #' @export
 obj_print_footer.pofct <- function(x, ...) {
   # need to figure out how to hook this in
   # attr(x, "po")
-  cat("Nesting: ")
+  rels <- glue::glue_data(
+    igraph::as_data_frame(attr(x, "po"), "edges"),
+    "{to} <= {from}") %>%
+    glue::glue_collapse(", ")
+
+  cat("Nesting: ", rels)
 }
 
 #' Helper for more convenient partial order factor creation
@@ -52,12 +52,17 @@ obj_print_footer.pofct <- function(x, ...) {
 #' @param levels optional character vector, mostly for ordering.
 #' @param partial_order tibble with symbolic columns `from` and `to`
 #' @export
-pofct <- function(x = character(), levels, partial_order = tibble(), ...) {
+#' @examples
+#' pofct(c("fruit", "apples", "bananas"), po = tibble(from=c("fruit", "fruit"),to=c("apples", "bananas")))
+pofct <- function(x = character(), po = tibble(from = character(), to = character())) {
 
-  # translate x -> int & levels, partial order -> corresponding int.
-  # is this too much?
-  # what should int order be based on?
+  x <- vec_cast(x, character())
 
+  # edge_df prep
+  po <- vec_cast(po, tibble(from=character(), to=character()))
+  po <- po[1:2]
+
+  new_pofct(x, po)
 }
 
 #' Validate pofct S3 class
@@ -66,7 +71,11 @@ validate_pofct <- function(x) {
 
 }
 
-
+#' @export
+vec_ptype2.pofct.pofct <- function(x, y, ...) {
+  pofct()
+  # join the graphs...
+}
 
 
 
