@@ -50,7 +50,7 @@ obj_print_footer.pofct <- function(x, ...) {
 #'
 #' @param x the values
 #' @param levels optional character vector, mostly for ordering.
-#' @param partial_order tibble with symbolic columns `from` and `to`
+#' @param po tibble representing partial order with symbolic columns `from` and `to`
 #' @export
 #' @examples
 #' pofct(c("fruit", "apples", "bananas"), po = tibble(from=c("fruit", "fruit"),to=c("apples", "bananas")))
@@ -71,20 +71,55 @@ validate_pofct <- function(x) {
 
 }
 
+
+# Coerciion and casting -----------------------------------------------------
+
+#' @method vec_ptype2 pofct
+#' @export
+vec_ptype2.pofct <- function(x, y, ...) {
+  UseMethod("y")
+}
+
 #' @export
 vec_ptype2.pofct.pofct <- function(x, y, ...) {
   pofct()
   # join the graphs...
 }
 
+#' @method vec_ptype2.pofct character
+#' @export
+vec_ptype2.pofct.character <- function(x, y, ...) y
+
+#' @method vec_ptype2.character pofct
+#' @export
+vec_ptype2.character.pofct <- function(x, y, ...) x
+
+#' @method vec_ptype2.pofct factor
+#' @export
+vec_ptype2.pofct.factor <- function(x, y, ...) x
+
+#' @method vec_ptype2.factor pofct
+#' @export
+vec_ptype2.factor.pofct <- function(x, y, ...) y
 
 
 
+#' @export
+vec_cast.pofct.pofct <- function(x, to, ...) {
+  x
+}
 
+# factor -> pofct
+#' @export
+vec_cast.pofct.factor <- function(x, to, ...) {
+  x
+}
 
-
-
-
+# pofct -> chr
+#' @export
+vec_cast.character.pofct <- function(x, to, ...) {
+  vec_data(x)
+}
 
 
 # Math and arithmetic -----------------------------------------------------

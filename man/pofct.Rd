@@ -9,9 +9,9 @@ pofct(x = character(), po = tibble(from = character(), to = character()))
 \arguments{
 \item{x}{the values}
 
-\item{levels}{optional character vector, mostly for ordering.}
+\item{po}{tibble representing partial order with symbolic columns `from` and `to`}
 
-\item{partial_order}{tibble with symbolic columns `from` and `to`}
+\item{levels}{optional character vector, mostly for ordering.}
 }
 \description{
 Helper for more convenient partial order factor creation
